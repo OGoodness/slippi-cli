@@ -1,12 +1,12 @@
 {
-  "name": "test",
+  "name": "slippi-cli",
   "description": "Testing Func",
   "version": "0.0.0",
   "author": "OGoodness @OGoodness",
   "bin": {
     "test": "./bin/run"
   },
-  "bugs": "https://github.com/OGoodness/slp-cli/issues",
+  "bugs": "https://github.com/OGoodness/slippi-cli/issues",
   "dependencies": {
     "@oclif/command": "^1",
     "@oclif/config": "^1",
@@ -42,7 +42,7 @@
     "/npm-shrinkwrap.json",
     "/oclif.manifest.json"
   ],
-  "homepage": "https://github.com/OGoodness/slp-cli",
+  "homepage": "https://github.com/OGoodness/slippi-cli",
   "keywords": [
     "oclif"
   ],
@@ -50,12 +50,12 @@
   "main": "lib/index.js",
   "oclif": {
     "commands": "./lib/commands",
-    "bin": "test",
+    "bin": "slp",
     "plugins": [
       "@oclif/plugin-help"
     ]
   },
-  "repository": "OGoodness/slp-cli",
+  "repository": "OGoodness/slippi-cli",
   "scripts": {
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "eslint . --ext .ts --config .eslintrc",
