@@ -16,49 +16,29 @@ Testing Func
 # Usage
 <!-- usage -->
 ```sh-session
-$ npm install -g test
-$ test COMMAND
+$ npm install -g slippi-cli
+$ slp COMMAND
 running command...
-$ test (-v|--version|version)
-test/0.0.0 linux-x64 node-v10.19.0
-$ test --help [COMMAND]
+$ slp (-v|--version|version)
+slippi-cli/0.0.1 linux-x64 node-v10.19.0
+$ slp --help [COMMAND]
 USAGE
-  $ test COMMAND
+  $ slp COMMAND
 ...
 ```
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`test hello [FILE]`](#test-hello-file)
-* [`test help [COMMAND]`](#test-help-command)
+* [`slp help [COMMAND]`](#slp-help-command)
+* [`slp stats [FILE]`](#slp-stats-file)
 
-## `test hello [FILE]`
+## `slp help [COMMAND]`
 
-describe the command here
-
-```
-USAGE
-  $ test hello [FILE]
-
-OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
-
-EXAMPLE
-  $ test hello
-  hello world from ./src/hello.ts!
-```
-
-_See code: [src/commands/hello.ts](https://github.com/OGoodness/test/blob/v0.0.0/src/commands/hello.ts)_
-
-## `test help [COMMAND]`
-
-display help for test
+display help for slp
 
 ```
 USAGE
-  $ test help [COMMAND]
+  $ slp help [COMMAND]
 
 ARGUMENTS
   COMMAND  command to show help for
@@ -68,4 +48,28 @@ OPTIONS
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.2/src/commands/help.ts)_
+
+## `slp stats [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ slp stats [FILE]
+
+ARGUMENTS
+  FILE  (a|b) [default: world] output file
+
+OPTIONS
+  -F, --force
+  -d, --dir=dir    Directory to scan and get stats from
+  -f, --file=file  file get stats
+  -p, --path=path  Path to get value in JSON output
+
+EXAMPLE
+  $ test hello
+  hello world from ./src/hello.ts!
+```
+
+_See code: [src/commands/stats.ts](https://github.com/OGoodness/slippi-cli/blob/v0.0.1/src/commands/stats.ts)_
 <!-- commandsstop -->

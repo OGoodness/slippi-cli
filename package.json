@@ -1,7 +1,7 @@
 {
   "name": "slippi-cli",
   "description": "Testing Func",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "OGoodness @OGoodness",
   "bin": {
     "test": "./bin/run"
