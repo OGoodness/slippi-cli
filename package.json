@@ -52,8 +52,7 @@
     "commands": "./lib/commands",
     "bin": "slp",
     "plugins": [
-      "@oclif/plugin-help",
-      "@oclif/plugin-update"
+      "@oclif/plugin-help"
     ]
   },
   "repository": "OGoodness/slippi-cli",

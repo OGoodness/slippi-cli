@@ -5,6 +5,7 @@
 - Turn slippi into video: https://github.com/kevinsung/slp-to-video
 - Features of this: https://gitlab.com/Coukaratcha/slippi-stats-web
 - Sort by character and show character logo
+- Add auto update
 
 ```bash
 --average -a
