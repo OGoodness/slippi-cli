@@ -20,7 +20,7 @@ $ npm install -g slippi-cli
 $ slp COMMAND
 running command...
 $ slp (-v|--version|version)
-slippi-cli/0.0.1 linux-x64 node-v10.19.0
+slippi-cli/0.0.2 linux-x64 node-v10.19.0
 $ slp --help [COMMAND]
 USAGE
   $ slp COMMAND
@@ -67,9 +67,9 @@ OPTIONS
   -p, --path=path  Path to get value in JSON output
 
 EXAMPLE
-  $ slp test
+  $ test hello
   hello world from ./src/hello.ts!
 ```
 
-_See code: [src/commands/stats.ts](https://github.com/OGoodness/slippi-cli/blob/v0.0.1/src/commands/stats.ts)_
+_See code: [src/commands/stats.ts](https://github.com/OGoodness/slippi-cli/blob/v0.0.2/src/commands/stats.ts)_
 <!-- commandsstop -->
