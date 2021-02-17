@@ -1,13 +1,13 @@
-test
+slippi-cli
 ====
 
-Testing Func
+Slippi-cli Description
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/test.svg)](https://npmjs.org/package/test)
-[![Codecov](https://codecov.io/gh/OGoodness/test/branch/master/graph/badge.svg)](https://codecov.io/gh/OGoodness/test)
-[![Downloads/week](https://img.shields.io/npm/dw/test.svg)](https://npmjs.org/package/test)
-[![License](https://img.shields.io/npm/l/test.svg)](https://github.com/OGoodness/test/blob/master/package.json)
+[![Version](https://img.shields.io/npm/v/slippi-cli.svg)](https://npmjs.org/package/slippi-cli)
+[![Codecov](https://codecov.io/gh/OGoodness/slippi-cli/branch/master/graph/badge.svg)](https://codecov.io/gh/OGoodness/slippi-cli)
+[![Downloads/week](https://img.shields.io/npm/dw/slippi-cli.svg)](https://npmjs.org/package/slippi-cli)
+[![License](https://img.shields.io/npm/l/slippi-cli.svg)](https://github.com/OGoodness/slippi-cli/blob/master/package.json)
 
 <!-- toc -->
 * [Usage](#usage)
@@ -67,7 +67,7 @@ OPTIONS
   -p, --path=path  Path to get value in JSON output
 
 EXAMPLE
-  $ test hello
+  $ slp test
   hello world from ./src/hello.ts!
 ```
 
