@@ -20,7 +20,7 @@ $ npm install -g slippi-cli
 $ slp COMMAND
 running command...
 $ slp (-v|--version|version)
-slippi-cli/0.0.2 linux-x64 node-v10.19.0
+slippi-cli/0.0.3 linux-x64 node-v10.19.0
 $ slp --help [COMMAND]
 USAGE
   $ slp COMMAND
@@ -69,5 +69,5 @@ EXAMPLE
   $ slp stats -f game.slp -p 'overall'
 ```
 
-_See code: [src/commands/stats.ts](https://github.com/OGoodness/slippi-cli/blob/v0.0.2/src/commands/stats.ts)_
+_See code: [src/commands/stats.ts](https://github.com/OGoodness/slippi-cli/blob/v0.0.3/src/commands/stats.ts)_
 <!-- commandsstop -->
