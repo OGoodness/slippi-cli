@@ -61,14 +61,12 @@ ARGUMENTS
   FILE  (a|b) [default: world] output file
 
 OPTIONS
-  -F, --force
-  -d, --dir=dir    Directory to scan and get stats from
-  -f, --file=file  file get stats
+  -d, --dir=dir    Directory(s) to scan and get stats from
+  -f, --file=file  File(s) to pull stats from
   -p, --path=path  Path to get value in JSON output
 
 EXAMPLE
-  $ test hello
-  hello world from ./src/hello.ts!
+  $ slp stats -f game.slp -p 'overall'
 ```
 
 _See code: [src/commands/stats.ts](https://github.com/OGoodness/slippi-cli/blob/v0.0.2/src/commands/stats.ts)_

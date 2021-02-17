@@ -6,15 +6,14 @@ export default class Stats extends Command {
   static description = 'describe the command here'
 
   static examples = [
-    `$ test hello
-hello world from ./src/hello.ts!
+    `$ slp stats -f game.slp -p 'overall'
 `,
   ]
 
   static flags = {
     file: flags.string({
       char: 'f',                    // shorter flag version
-      description: 'file get stats', // help description for flag
+      description: 'File(s) to pull stats from', // help description for flag
       hidden: false,                // hide from help
       multiple: true,              // allow setting this flag multiple times
       // env: 'MY_NAME',               // default to value of environment variable
@@ -27,7 +26,7 @@ hello world from ./src/hello.ts!
     }),
     dir: flags.string({
       char: 'd',                    // shorter flag version
-      description: 'Directory to scan and get stats from', // help description for flag
+      description: 'Directory(s) to scan and get stats from', // help description for flag
       hidden: false,                // hide from help
       multiple: true,              // allow setting this flag multiple times
       // env: 'MY_NAME',               // default to value of environment variable
@@ -51,16 +50,6 @@ hello world from ./src/hello.ts!
       // dependsOn: ['extra-flag'],    // this flag requires another flag
       // exclusive: ['extra-flag'],    // this flag cannot be specified alongside this other flag
     }),
-  
-    // flag with no value (-f, --force)
-    force: flags.boolean({
-      char: 'F',
-      default: true,                // default value if flag not passed (can be a function that returns a boolean)
-      // boolean flags may be reversed with `--no-` (in this case: `--no-force`).
-      // The flag will be set to false if reversed. This functionality
-      // is disabled by default, to enable it:
-      // allowNo: true
-    }),
   }
 
   static args = [
@@ -83,7 +72,6 @@ hello world from ./src/hello.ts!
     let result = {}
     cli.action.start('starting a process')
     const {args, flags} = this.parse(Stats)
-    console.log(args,flags)
 
     const slippiHandler = new SlippiHandler(flags)
     // Check overall before handling file/dir to set path

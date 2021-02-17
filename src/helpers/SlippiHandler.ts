@@ -21,14 +21,12 @@ class SlippiHandler {
   
   processDirectory(directory: string): Array<string> {
     return _.map(fs.readdirSync(directory), (file) => {
-      console.log(file)
       return directory + '/' + file
     })
   }
   
   async handleStats(files: Array<string>, type: string){
     let allFileStats = []
-    console.log(type, type === 'file')
     if(type === 'directory'){
       const allDirectories = _.flatMap(_.map(files, (dir) => this.processDirectory(dir)))
       allFileStats = allDirectories.map((file) => this.processFile(file))
