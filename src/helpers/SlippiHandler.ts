@@ -1,16 +1,22 @@
 import { SlippiGame } from '@slippi/slippi-js';
 import fs from 'fs';
 import _ from 'lodash';
+import cli from 'cli-ux'
+
 
 let flags: any = {} 
 
 class SlippiHandler {
-  
+  bar: any
+  counter = 0
   constructor(providedFlags: any){
     flags = providedFlags
   }
 
-  processFile(file: string): any {
+  async processFile(file: string): Promise<any> {
+    this.bar.update(++this.counter, {
+      fileName: file
+    }, 0)
     let game: any = new SlippiGame(file).getStats()
     _.set(game, 'filename', file)
     if(flags.path){
@@ -25,8 +31,9 @@ class SlippiHandler {
     })
   }
   
-  async handleStats(files: Array<string>, type: string){
-    let allFileStats = []
+  async handleStats(files: Array<string>, type: string, bar: any){
+    this.bar = bar
+    let allFileStats: any = []
     if(type === 'directory'){
       const allDirectories = _.flatMap(_.map(files, (dir) => this.processDirectory(dir)))
       allFileStats = allDirectories.map((file) => this.processFile(file))
@@ -34,7 +41,7 @@ class SlippiHandler {
     if(type === 'file'){
       allFileStats = files.map((file) => this.processFile(file))
     }
-    return await Promise.all(allFileStats)
+    return Promise.all(allFileStats)
   }
 
   getPathValue(input: string){

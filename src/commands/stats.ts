@@ -1,6 +1,7 @@
 import {Command, flags} from '@oclif/command'
 import SlippiHandler  from '../helpers/SlippiHandler'
 import cli from 'cli-ux'
+import {calculateTotalGameTime, getFileCount} from '../helpers/Time'
 
 export default class Stats extends Command {
   static description = 'describe the command here'
@@ -37,6 +38,14 @@ export default class Stats extends Command {
       // dependsOn: ['extra-flag'],    // this flag requires another flag
       // exclusive: ['extra-flag'],    // this flag cannot be specified alongside this other flag
     }),
+    time: flags.boolean({
+      char: 't',                    // shorter flag version
+      description: 'Calculate Total Time from File(s)', // help description for flag
+      hidden: false,                // hide from help
+      default: false,             // default value if flag not passed (can be a function that returns a string or undefined)
+      // dependsOn: ['extra-flag'],    // this flag requires another flag
+      // exclusive: ['extra-flag'],    // this flag cannot be specified alongside this other flag
+    }),
     path: flags.string({
       char: 'p',                    // shorter flag version
       description: 'Path to get value in JSON output', // help description for flag
@@ -70,26 +79,36 @@ export default class Stats extends Command {
   async run() {
     // start the spinner
     let result = {}
-    cli.action.start('starting a process')
     const {args, flags} = this.parse(Stats)
-
     const slippiHandler = new SlippiHandler(flags)
+    const bar = cli.progress({
+      format: '[{bar}] {percentage}% | ETA: {eta}s | {value}/{total} | File Name: {fileName}',
+    })
+
     // Check overall before handling file/dir to set path
     if (args.overall || args.summary) {
       
     }
-
-    // Start Handling Files
-    if (flags.file) {
-      result = await slippiHandler.handleStats(flags.file, 'file')
-    }
-    if (flags.dir) {
-      result = await slippiHandler.handleStats(flags.dir, 'directory')
+    if(flags.time){
+      let path = flags.dir ?? flags.path
+      result = await calculateTotalGameTime(path)
+    }else{
+      // Need to generalize it so that you can count on file and directory without adding more code
+      bar.start(await getFileCount(flags.dir), 0, {
+        fileName: 'N/A',
+      })
+      // Start Handling Files
+      if (flags.file) {
+        result = await slippiHandler.handleStats(flags.file, 'file', bar)
+      }
+      if (flags.dir) {
+        result = await slippiHandler.handleStats(flags.dir, 'directory', bar)
+      }
     }
     
 
     // stop the spinner
-    cli.action.stop() // shows 'starting a process... done'
+    bar.stop() // shows 'starting a process... done'
     this.log(JSON.stringify(result, null, 2))
     // // show on stdout instead of stderr
     // cli.action.start('starting a process', 'initializing', {stdout: true})    
