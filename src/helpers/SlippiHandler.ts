@@ -1,7 +1,6 @@
 import { SlippiGame } from '@slippi/slippi-js';
-import fs from 'fs';
 import _ from 'lodash';
-import cli from 'cli-ux'
+import { getFiles } from './common'
 
 
 let flags: any = {} 
@@ -25,22 +24,21 @@ class SlippiHandler {
     return game
   }
   
-  processDirectory(directory: string): Array<string> {
-    return _.map(fs.readdirSync(directory), (file) => {
-      return directory + '/' + file
-    })
-  }
-  
-  async handleStats(files: Array<string>, type: string, bar: any){
+  async handleStats(files: Array<string>, bar: any){
     this.bar = bar
     let allFileStats: any = []
-    if(type === 'directory'){
-      const allDirectories = _.flatMap(_.map(files, (dir) => this.processDirectory(dir)))
-      allFileStats = allDirectories.map((file) => this.processFile(file))
+    for await (const item of files) {
+      for await (const f of getFiles(item)) {
+        try{
+          allFileStats.push(this.processFile(f))
+        }catch(error){
+          // console.log("\nIssue with a file: ", { error, f })
+        console.log(`\nIssue with a file: ${f}, Continuing` )
+        }
+      }
     }
-    if(type === 'file'){
-      allFileStats = files.map((file) => this.processFile(file))
-    }
+    // allFileStats = files.map((file) => this.processFile(file))
+
     return Promise.all(allFileStats)
   }
 
