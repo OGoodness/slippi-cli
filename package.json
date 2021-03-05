@@ -1,7 +1,7 @@
 {
   "name": "slippi-cli",
-  "description": "Testing Func",
-  "version": "0.0.5",
+  "description": "Analyze and Parse your Slippi Files! CLI Wrapper for the Slippi Library",
+  "version": "1.0.5",
   "author": "OGoodness @OGoodness",
   "bin": {
     "slp": "./bin/run"
@@ -46,7 +46,14 @@
   ],
   "homepage": "https://github.com/OGoodness/slippi-cli",
   "keywords": [
-    "oclif"
+    "ssbm",
+    "typescript",
+    "oclif",
+    "cli",
+    "slippi",
+    "melee",
+    "project-slippi",
+    "smash"
   ],
   "license": "MIT",
   "main": "lib/index.js",
